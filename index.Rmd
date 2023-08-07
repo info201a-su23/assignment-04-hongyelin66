@@ -5,67 +5,81 @@ output: html_document
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+**An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)**
+
+I am going to research the trend of prison population of different races, the correlation between total population and prison population in the state of Washington. Besides, I will also investigate the distribution of prison population around the states of the U.S. Prison Population, which is defined as those individuals sentenced to the state prison authority, aggregated by the county of commitment. Total prison population count is based on the number of people held in prison on December 31 of a given year. We disaggregate prison population count by race and gender. We include six race categories: Asian or Pacific Islander (including Native Hawaiian) (AAPI), Black, Latinx, Native American, White, and Other or unknown racial categories.
+
+The reason I do this research is that I am a student of the University of Washington, so it is my duty to contribute my knowledge to this land and make it better. 
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+``````{r, echo = FALSE, code = readLines("summary.R"), message = FALSE}
+```
 
-These will likely be calculated using your DPLYR skills, answering questions such as: 
+The five values above present the max and min prison population in the dataset, and which county used to have the max prison population at which year. Besides, we can know the county's mean prison population. The data above help us to know which county need to help most among all counties. Moreover, we can speculate some reason why the prison population will be that high through the year and location.
 
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+**Who collected the data?**
 
+Vera released the incarceration data.
+
+**How was the data collected or generated?**
+
+This dataset was assembled using information collected by the U.S. Department of Justice Bureau of Justice Statistics (BJS), supplemented with data from state departments of correction when federal data is not available. The BJS datasets are:
+- the National Corrections Reporting Program (NCRP), which has collected
+individual-level data on admissions and releases since 1983;
+- the Deaths in Custody Reporting Program: Jail Populations (DCRP), for
+facility-level jail population and admissions data collected between 2000 and 2013;
+- the Annual Survey of Jails (ASJ), which has collected data for a sample of counties since 1982;
+- the Census of Jails (COJ), which provides data on all counties since its first collection in 1970; and
+
+In addition to incarceration data, the dataset also includes:
+- population estimates collected by the U.S. Census Bureau and the Centers for Disease Control and Prevention (CDC), and
+- geographic information from the U.S. Department of Agriculture (USDA) and the U.S. Census Bureau.
+
+**Why was the data collected?**
+
+Try to find how much have prison and jail populations increased over time, and how do race and gender figure into these trends.
+
+**How many observations (rows) are in your data?**
+
+There are 153811 rows in my data.
+
+**How many features (columns) are in the data?**
+
+There are 36 columns in the data.
+
+**What, if any, ethical questions or questions of power do you need to consider when working with this data?**
+
+Data Use for Social Good vs. Harm: we have to consider the potential positive and negative impacts of using this data. Is this data being used to benefit society, or are there risks of harm to individuals or communities? For example, will the map showing the prison population cause some people develop bad impression about some states with high prison population and afraid to be there.
+
+**What are possible limitations or problems with this data?   (at least 200 words)**
+
+Missing Data: Incomplete or missing data points can reduce the sample size and potentially bias the results if the missing data is not handled appropriately.For example, this dataset lacks many details of prison populations, and it does not have the number of prison population of several states. Therefore, when I draw the map of U.S, several states are filled with grey due to the missing data.
+
+Data Volume and Scalability: Handling large volumes of data can be computationally challenging and may require specialized infrastructure and tools. For example, the dataset has 153811 rows and 36 columns, when I try to deal with it and extract the needed information, I found it is hard to make it and took lots of time and effort to finish data manipulation.
+
+Data Privacy and Confidentiality Concerns: Working with sensitive or personally identifiable information may raise ethical and legal concerns about data privacy and confidentiality. I will consider will this data cause some ethical problem and legal concerns when I use it. After using it to draw the charts, I got some worries if the data will bring some negative effects to the society because this topic is kind of sensitive.
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+``````{r, echo = FALSE, code = readLines("chart1.R"), message = FALSE}
 ```
 
+This chart is a multiple-lines plot and shows the total prison population of different races in the state of Washington from 1990 to 2016, which are black, latinx, native, white, and other races. They are represented by different colors in the chart and illustrate specifically in the legend. In the chart, the white has the highest rising trend among five races, which break the stereotype that the black race has the highest crime rate. However, I think this may be the cause that there are more white people living in WA, so the crime rate will be higher than others. This need to think carefully when using this chart.
+
 ### Variable Comparison Chart
+ 
+``````{r, echo = FALSE, code = readLines("chart2.R"), message = FALSE}
+```
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+This chart is a scatter plot with linear trend and confidence interval drew. The chart shows the relation between the population and prison population in WA. From this question, I try to investigate if the higher population is, the higher prison population emerges in WA. However, the linear trend shows that the state of Washington is keeping almost the same rate of prison population when the population was increasing during the past years. From my opinion, it is praiseful that the government of WA can keep the prison rate stable with the growth of population. However, the slope of line are still steep, which remind us if we can do anything to lower the prison population to make a better WA.
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+``````{r, echo = FALSE, code = readLines("map.R"), message = FALSE}
+```
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
-
+This map is the U.S. map with prison population in 2016, the green stands for low prison population, while the red stands for high prison population. The grey part stands for a missing data. This map can tell us which state mostly need to care about the prison population problem. From the map, we can know that California has the highest prison population, which reminds us that California need some new acts or policies to help guide the criminals and prevent the new crime committed.
